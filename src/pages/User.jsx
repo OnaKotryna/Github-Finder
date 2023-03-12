@@ -13,13 +13,13 @@ function User() {
   useEffect(() => {
     dispatch({ type: "SET_LAODING" });
     const getUserData = async () => {
-      const userData = await getUser(param.login);
+      const userData = await getUser(params.login);
       dispatch({ type: "GET_USER", payload: userData });
-      const userRepoData = await getUserRepos(param.login);
+      const userRepoData = await getUserRepos(params.login);
       dispatch({ type: "GET_REPOS", payload: userRepoData });
     };
     getUserData();
-  }, []);
+  }, [dispatch, params.login]);
 
   // destructure user
   const {
